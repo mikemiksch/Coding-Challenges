@@ -1,6 +1,6 @@
 //Given a string s, find the first non-repeating character in it. For example, if the input string is “GeeksforGeeks”, then output should be ‘f’ and if input string is “GeeksQuiz”, then output should be ‘G’.
 
-import foundation
+import Foundation
 
 // Function takes in a string, and returns a string
 func nonRepeated(s: String) -> String {
@@ -14,10 +14,12 @@ func nonRepeated(s: String) -> String {
     //Instantiate a string that will be our returned answer
     var firstNonRepeated = String()
 
-    // For each Character in the array, iterates that character's count in the dictionary by 1, starting from a default of 0
+    // For each Character in the string, append to characterArray
     for each in s.characters {
         characterArray.append(each)
     }
+    
+    // For each Character in the array, iterates that character's count in the dictionary by 1, starting from a default of 0
     for each in characterArray {
         counts[each] = (counts[each] ?? 0) + 1
     }
