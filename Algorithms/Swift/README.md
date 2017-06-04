@@ -1,3 +1,3 @@
 # Swift Algorithims
 
-Algorithims written in Swift
+Annotated algorithims written in Swift.
