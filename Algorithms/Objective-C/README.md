@@ -1,3 +1,3 @@
 # Swift Objective-C
 
-Algorithims written in Objective-C
+Annotated algorithims written in Objective-C.
