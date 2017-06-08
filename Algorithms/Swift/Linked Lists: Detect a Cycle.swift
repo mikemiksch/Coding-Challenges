@@ -31,7 +31,6 @@ class Node {
     let next : Node?
     init(data: Int) {
         self.data = data
-        self.next = next
     }
 }
 
