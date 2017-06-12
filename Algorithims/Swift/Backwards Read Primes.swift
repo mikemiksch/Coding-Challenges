@@ -48,5 +48,3 @@ func backwardsPrime(start: Int, stop: Int) -> [Int] {
     // Return our answering array.
     return primesArray
 }
-
-backwardsPrime(start: 2, stop: 100)
