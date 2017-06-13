@@ -138,3 +138,25 @@ a5(32);
 * 24, 24, 28, 28, 42
 * 42, 28, 24, 28, 42
 
+## Multiple Choice ##
+
+Consider the following code. What would the line console.log(x) display below?
+
+```
+var x = 100;
+
+function test() {
+     if(false) {
+          var x = 199; 
+     }
+     console.log(x); //what does this log?
+}
+```
+ 
+
+**Pick one of the choices:**  
+
+* Number of elements stored in the hash table 
+* Size of elements stored in the hash table 
+* Number of buckets in the hash table
+* Quality of the hash function
