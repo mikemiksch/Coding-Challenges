@@ -38,3 +38,23 @@ What is the complexity of the above code snippet?
 * O(1)
 * O(log2(n))
 * O(2^n)
+
+## Worst-case Running Time ##
+
+Which of the following sorting algorithms does not have a worst case running time of 0(n2)?
+
+**Pick one of the choices:**  
+
+* insertion sort
+* merge sort
+* quick sort
+* bubble sort
+
+Which of the following is true about abstract classes?
+
+**Pick one of the choices:**  
+
+* abstract classes can be used as just any other class
+* abstract classes need to be declared with `abstract` keyword. 
+* abstract classes cannot be instantiated
+* a class containing at least one abstract method will be an abstract class
