@@ -6,11 +6,7 @@ The bounds of a UIView are the coordinates and size (x & y, width & height value
 
 * **What’re the 5 lifecycle states of an iOS application?**
 
-Not running
-Inactive
-Active
-Background
-Suspended
+Not Running, Inactive, Active, Background, Suspended
 
 * **What can be done in NSOperation that you can’t do in GCD?**
 
