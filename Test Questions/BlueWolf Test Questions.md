@@ -25,7 +25,8 @@ Which of the following is NOT one of those factors?
   
   
 Consider the following code snippet:
-```int a = 1;
+```
+int a = 1;
   while (a < n) {
       a = a * 2;
 }
@@ -62,7 +63,8 @@ Which of the following is true about abstract classes?
 ## Java: Find the Output ##
 
 Consider the following Java code snippet:
-```public int divide(int a, int b) {
+```
+public int divide(int a, int b) {
      int c = -1;
  
       try {
@@ -83,7 +85,7 @@ what will our code *print* when we *divide(4,0)*?
 
 **Pick one of the choices:**  
 
-* insertion sort
-* merge sort
-* quick sort
-* bubble sort
+* Exception
+* Finally
+* No output
+* -1
