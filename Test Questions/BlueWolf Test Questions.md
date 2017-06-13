@@ -53,7 +53,7 @@ Which of the following sorting algorithms does not have a worst case running tim
 
 Which of the following is true about abstract classes?
 
-**Pick one of the choices:**  
+**Pick the correct choices:**  
 
 * abstract classes can be used as just any other class
 * abstract classes need to be declared with `abstract` keyword. 
@@ -95,10 +95,46 @@ what will our code *print* when we *divide(4,0)*?
 Identify any and all rule(s) to follow when securing a web application based on REST
 architecture:
 
-**Pick one of the choices:**  
+**Pick the correct choices:**  
 
 * Sensitive data such as usernames and passwords must always be passed to a web service using the POST method
 * A web service must not use any HTTP error messages
 * All input validations must be done on the server
 * Validate malformed XML/JSON
 * PUT operations must be read-only
+
+## First Five Alerts **
+
+Select the option that has the correct sequence of first five alert messages, when the following javascript code snippet is run:
+```
+function func(x) { 
+     var z = 8;
+
+     return function(y) { 
+          alert(x + y + z);
+     }
+}
+
+var n1 = new Number(32);
+var a1 = func(n1);
+var n2 = new Number(16);
+var a2 = func(n2);
+var n3 = new Number(8);
+var a3 = func(n3);
+var n4 = new Number(4);
+var a4 = func(n4);
+var n5 = new Number (2);
+var a5 = func(n5);
+a1(2);
+a2(4);
+a3(8);
+a4(16);
+a5(32);
+```
+**Pick one of the choices:**  
+
+* 34, 36, 40, 48, 64
+* 2, 4, 8, 16, 32
+* 24, 24, 28, 28, 42
+* 42, 28, 24, 28, 42
+
