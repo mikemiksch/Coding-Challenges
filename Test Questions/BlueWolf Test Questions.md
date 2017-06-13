@@ -1,4 +1,4 @@
-##Properties of Data Structures##
+## Properties of Data Structures ##
 
 **We perform the following sequence of actions:**  
  **1. Insert the following elements into a set: *1, 2, 9, 1, 2, 3, 1, 4, 1, 5, 7.***  
