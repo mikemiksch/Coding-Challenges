@@ -156,7 +156,31 @@ function test() {
 
 **Pick one of the choices:**  
 
-* Number of elements stored in the hash table 
-* Size of elements stored in the hash table 
-* Number of buckets in the hash table
-* Quality of the hash function
+* 100
+* 199
+* undefined
+* null
+
+## Java: Design Patterns ##
+
+The following code snippet is a demonstration of a particular design pattern. Which design pattern is it?
+```
+public class Mystery {
+    private static Mystery instance = null;
+    protected Mystery() {
+         // Exists only to defeat instantiation.
+    }
+    public static Mystery getInstance() {
+        if(instance == null) {
+             instance = new Mystery();
+        }
+        return instance;
+    }
+}
+```
+**Pick one of the choices:**  
+
+* Factory Design Pattern
+* Strategy Pattern
+* Singleton
+* Facade Design Pattern
