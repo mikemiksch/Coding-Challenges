@@ -47,7 +47,7 @@ func isBalanced(input: String) -> Bool {
     let bracketPairs = [")" : "(", "]" : "[", "}" : "{"]
     
     // Create an array of opening brackets
-    let openingBrakets = ["(", "[", "{"]
+    let openingBrackets = ["(", "[", "{"]
     
     // Create an empty array for our stack we'll want to append our answers to
     var stack = [String]()
@@ -59,7 +59,7 @@ func isBalanced(input: String) -> Bool {
         let stringifiedChar = String(char)
         
         //Check to see if our opening brackets contains our stringified character
-        if openingBrakets.contains(stringifiedChar) {
+        if openingBrackets.contains(stringifiedChar) {
             
             // If it does, append to our stack
             stack.append(stringifiedChar)
