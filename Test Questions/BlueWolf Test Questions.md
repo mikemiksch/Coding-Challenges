@@ -58,3 +58,32 @@ Which of the following is true about abstract classes?
 * abstract classes need to be declared with `abstract` keyword. 
 * abstract classes cannot be instantiated
 * a class containing at least one abstract method will be an abstract class
+
+## Java: Find the Output ##
+
+Consider the following Java code snippet:
+```public int divide(int a, int b) {
+     int c = -1;
+ 
+      try {
+           c = a / b;
+      }
+      catch (Exception e) {
+           System.err.print("Exception ");
+      }
+      finally {
+           System.err.println("Finally ");
+      }
+      
+      return c;
+}
+```
+
+what will our code *print* when we *divide(4,0)*?
+
+**Pick one of the choices:**  
+
+* insertion sort
+* merge sort
+* quick sort
+* bubble sort
