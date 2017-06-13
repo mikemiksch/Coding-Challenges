@@ -89,3 +89,16 @@ what will our code *print* when we *divide(4,0)*?
 * Finally
 * No output
 * -1
+
+## REST Securely ##
+
+Identify any and all rule(s) to follow when securing a web application based on REST
+architecture:
+
+**Pick one of the choices:**  
+
+* Sensitive data such as usernames and passwords must always be passed to a web service using the POST method
+* A web service must not use any HTTP error messages
+* All input validations must be done on the server
+* Validate malformed XML/JSON
+* PUT operations must be read-only
