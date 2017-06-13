@@ -27,5 +27,6 @@ Consider the following code snippet:
 ```int a = 1;
   while (a < n) {
       a = a * 2;
-}```
+}
+```
 What is the complexity of the above code snippet?
