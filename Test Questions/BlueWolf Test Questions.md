@@ -22,7 +22,7 @@ Which of the following is NOT one of those factors?
 * Size of elements stored in the hash table 
 * Number of buckets in the hash table
 * Quality of the hash function
-
+  
 Consider the following code snippet:
 ```int a = 1;
   while (a < n) {
