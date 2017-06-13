@@ -31,3 +31,10 @@ Consider the following code snippet:
 }
 ```
 What is the complexity of the above code snippet?
+
+**Pick one of the choices:**  
+
+* O(n)
+* O(1)
+* O(log2(n))
+* O(2^n)
