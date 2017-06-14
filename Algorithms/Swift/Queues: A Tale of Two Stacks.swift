@@ -88,9 +88,9 @@ class Queue {
     }
     
     // Dequeuing inverts the enqueued stack and removes the last item (being the first in the queue)
-    func dequeue() -> Int? {
+    func dequeue() {
         readyStacks()
-        return secondStack.popLast()
+        secondStack.popLast()
     }
     
     
