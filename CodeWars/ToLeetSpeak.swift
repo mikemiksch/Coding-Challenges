@@ -78,10 +78,10 @@ func toLeetSpeak(_ s : String) -> String {
     // Create a string to store our result
     var result = String()
     
-    // For each character in our dictionary...
+    // For each character in our input...
     for each in s.characters {
         
-        // ...see if that character exists as a key.
+        // ...see if that character exists in our dictionary as a key.
         if let substitute = translationDictionary[each] {
             
             // If it does, replace it with the key's value in the dictionary and append it to our result string.
