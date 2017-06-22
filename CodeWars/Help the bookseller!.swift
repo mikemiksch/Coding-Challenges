@@ -51,7 +51,7 @@ func stockList(_ listOfArt: [String], _ listOfCat: [String]) -> String {
         _ = listOfArt.map ({
             (value: String) -> () in
             
-            // Separate our input into the categories and the quanitties
+            // Separate our input into the categories and the quantities
             let parse = value.components(separatedBy: " ")
             
             // Grab the first character of the ccode and turn it into a string
