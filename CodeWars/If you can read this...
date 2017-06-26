@@ -1,0 +1,105 @@
+//The idea for this Kata came from 9gag today.here
+//
+//You'll have to translate a string to Pilot's alphabet (NATO phonetic alphabet) wiki.
+//
+//Like this:
+//
+//Input: If you can read
+//
+//Output: India Foxtrot Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta
+//
+//Some notes
+//
+//Keep the punctuation, and remove the spaces.
+//Use Xray without dash or space.
+//Reference
+//
+//A: Alfa
+//B: Bravo
+//C: Charlie
+//D: Delta
+//E: Echo
+//F: Foxtrot
+//G: Golf
+//H: Hotel
+//I: India
+//J: Juliett
+//K: Kilo
+//L: Lima
+//M: Mike
+//N: November
+//O: Oscar
+//P: Papa
+//Q: Quebec
+//R: Romeo
+//S: Sierra
+//T: Tango
+//U: Uniform
+//V: Victor
+//W: Whiskey
+//X: Xray
+//Y: Yankee
+//Z: Zulu
+//
+//You can use the NATO hash with the alphabet
+
+import Foundation
+
+// Let's create a dictionary of what letters are represented by what words
+
+let translationDictionary = [
+    "A" : "Alfa",
+    "B" : "Bravo",
+    "C" : "Charlie",
+    "D" : "Delta",
+    "E" : "Echo",
+    "F" : "Foxtrot",
+    "G" : "Golf",
+    "H" : "Hotel",
+    "I" : "India",
+    "J" : "Juliett",
+    "K" : "Kilo",
+    "L" : "Lima",
+    "M" : "Mike",
+    "N" : "November",
+    "O" : "Oscar",
+    "P" : "Papa",
+    "Q" : "Quebec",
+    "R" : "Romeo",
+    "S" : "Sierra",
+    "T" : "Tango",
+    "U" : "Uniform",
+    "V" : "Victor",
+    "W" : "Whiskey",
+    "X" : "Xray",
+    "Y" : "Yankee",
+    "Z" : "Zulu"
+]
+
+func toNato(_ words: String) -> String {
+
+    // Our dictionary only has uppercase words, so we need to convert them before putting them in our array
+    let upperCased = Array(words.uppercased().characters)
+    
+    // Creating a mutable array of strings for our output
+    var output = [String]()
+    
+    // Looping through our uppercase letters
+    for each in upperCased {
+    
+        // If we have a value for the stringfied version of the character in the dictionary, append the translated version to our output.
+        if let unwrapped = translationDictionary[String(each)] {
+            output.append(unwrapped)
+            
+        // If the value is not in the dictionary and is not an empty space, append it as is.
+        } else if each != " " {
+            output.append(String(describing: each))
+        }
+    }
+    
+    // Reduce our array and separate our elements by a space
+    return output.joined(separator: " ")
+
+}
+
+
