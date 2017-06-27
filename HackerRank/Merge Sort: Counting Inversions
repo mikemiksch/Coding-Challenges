@@ -1,0 +1,145 @@
+//In an array, arr = [arr0, arr1,..., arrn-1], the elements at indices i and j (where i< j ) form an inversion if arri > arrj. In other words, inverted elements arri and arrj are considered to be "out of order". To correct an inversion, we can swap adjacent elements.
+//
+//For example, consider arr = [2, 4, 1]. It has two inversions: (2,1) and (4,1). To sort the array, we must perform the following two swaps to correct the inversions:
+
+// arr = [2,4,1] -> swap(1,4) -> swap (2,1) -> [1,2,4]
+//
+//Given  datasets, print the number of inversions that must be swapped to sort each dataset on a new line.
+//
+//Input Format
+//
+//The first line contains an integer, d, denoting the number of datasets.
+//The 2d subsequent lines describe each respective dataset over two lines:
+//
+//* The first line contains an integer, n, denoting the number of elements in the dataset.
+//* The second line contains n space-separated integers describing the respective values of arr0, arr1,..., arrn-1.
+//
+//Constraints
+//
+//* 1 <= d <= 15
+//* 1 <= n <= 10^5
+//* 1 <= arri <= 10^7
+//
+//Output Format
+//
+//For each of the d datasets, print the number of inversions that must be swapped to sort the dataset on a new line.
+//
+//Sample Input
+//
+// 2
+// 5
+// 1 1 1 2 2
+// 5
+// 2 1 3 1 2
+//
+//Sample Output
+//
+// 0
+// 4
+//
+//Explanation
+//
+//We sort the following d = 2 datasets:
+//
+//1. arr = [1,1,1,2,2] is already sorted, so there are no inversions for us to correct. Thus, we print 0 on a new line.
+//2. arr = [2,1,3,1,2] -1 swap-> [1,2,3,1,2] -2 swaps-> [1,1,2,3,2] -1 swap-> [1,1,2,2,3]
+//As we performed a total of 1 + 2 + 1 = 4 swaps to correct inversions, we print 4 on a new line.
+
+
+
+// This solution was provided by hadenmccabe on HackerRank.com in the discussion forum for this challenge. He explained it better than I ever could. You can find his original posts on the subject here: https://www.hackerrank.com/challenges/ctci-merge-sort/forum
+
+import Foundation
+
+func mergeSort<T : Comparable>(_ arr: inout [T]) -> Int {
+    // Make a cache
+    var cache = arr // Copy the original array to use as a cache of the
+    // appropriate size and type
+    
+    return mergeSortUtil(arr: &arr, cache: &cache, left: arr.startIndex, right: arr.endIndex)
+}
+
+// The function returns the number of swaps required to sort the array
+// When complete, the original array arr will be sorted in the range
+// left ..< right
+// Right is the "just beyond" index, i.e., arr[right] is a seg fault
+func mergeSortUtil<T : Comparable>(arr: inout [T], cache: inout [T], left: Int, right: Int) -> Int {
+    // End case for resursion
+    // Return if this is a one element array
+    if (right == left + 1) {
+        return 0
+    }
+    
+    // Find the point to split the array at, and do so using recursion
+    // and count the moves needed to sort
+    let center = (left + right) / 2
+    var moves = mergeSortUtil(arr: &arr, cache: &cache, left: left, right: center)
+    moves += mergeSortUtil(arr: &arr, cache: &cache, left: center, right: right)
+    
+    // Now the ranges left ..< center and center ..< right are sorted.
+    // Merge into the cache
+    
+    // Indices for moving through the left and right arrays
+    var leftIndex = left
+    var rightIndex = center
+    var cacheIndex = left
+    
+    // Repeat until one of the array halves is in position
+    while (leftIndex < center && rightIndex < right) {
+        if arr[leftIndex] <= arr[rightIndex] {
+            cache[cacheIndex] = arr[leftIndex]
+            cacheIndex += 1
+            leftIndex += 1
+        } else {
+            cache[cacheIndex] = arr[rightIndex]
+            if cacheIndex != rightIndex {
+                moves += center - leftIndex
+            }
+            cacheIndex += 1
+            rightIndex += 1
+        }
+    }
+    
+    // If the remaining, largest, values are in the left half,
+    // we have to move them into the cache, and copy everything
+    // back into the array
+    if leftIndex < center {
+        while leftIndex < center {
+            cache[cacheIndex] = arr[leftIndex]
+            cacheIndex += 1
+            leftIndex += 1
+        }
+        // Copy the cache into the array
+        cacheIndex = left
+        while cacheIndex < right {
+            arr[cacheIndex] = cache[cacheIndex]
+            cacheIndex += 1
+        }
+    } else {
+        // In this case, the right half isn't fully copied into the cache
+        // because they're already in their final position
+        cacheIndex = left
+        while cacheIndex < rightIndex {
+            arr[cacheIndex] = cache[cacheIndex]
+            cacheIndex += 1
+        }
+    }
+    
+    return moves
+}
+
+// Process input
+let t = Int(readLine()!)!
+
+for _ in 1...t {
+    // Ignore a line
+    let n = Int(readLine()!)!
+    // Get our array
+    let scan = Scanner(string: readLine()!)
+    // Initialize an array
+    var arr = [Int](repeating: 0, count: n)
+    for i in 0..<n {
+        scan.scanInt(&arr[i])
+    }
+    print(mergeSort(&arr))
+}
