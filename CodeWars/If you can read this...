@@ -78,27 +78,16 @@ let translationDictionary = [
 
 
 func toNato(_ words: String) -> String {
-
-    // Our dictionary only has uppercase words, so we need to convert them before putting them in our array
-    let upperCased = Array(words.uppercased().characters)
     
-    // Going to chain a map, filter, and reduce method on our array of characters
-    let output = upperCased.map ({ (char: Character) -> String in
-        var character = String()
+    // Convert our input into something to check the dictionary against by removing spaces nd converting all letters to uppercase.
+    let text = words.replacingOccurrences(of: " ", with: "").uppercased()
+    
+    // Chaining two maps and a join here. First we map the individual characters of our text and convert them to strings
+    return text.characters.map({String($0)})
         
-        // If our translation dictionary contains a stringified version of our chraacter, swap it out.
-        if let valid = translationDictionary[String(char)] {
-            character = valid
-            
-        // Else if the character is not a space, swap it for a stringified version of the character
-        } else if char != " " {
-            character = String(char)
-        }
+        // Then we map the stringified characters against their corresponding key in the dictionary, defaulting to their original value if no key exists.
+        .map({translationDictionary[$0] ?? $0})
         
-        // Return our modified character
-        return character
-        
-        // Filter out any empty strings (from resulting spaces) and join the elements with a " " between them.
-    }).filter( { $0 != "" } ).joined(separator: " ")
-    return output
+        // Join it all back together with a space separating each element
+        .joined(separator: " ")
 }
