@@ -10,23 +10,7 @@
 //
 //Should return: 160
 
-// It's a simple solution that probably wouldn't have much use outside of the specific constraints outlined in this challenge.
+// It's a single line solution, but it's doing a lot...
 func findOutlier(_ array: [Int]) -> Int {
-
-    // Instantiate an integer to hold our result
-    var result = Int()
-    
-    // Filter for odds
-    let odds = array.filter { $0 % 2 == 1 }
-    
-    // Filter for evens
-    let evens = array.filter { $0 % 2 == 0 }
-    
-    // Which ever one has only one result is our answer
-    if odds.count == 1 {
-        result = odds[0]
-    } else {
-        result = evens[0]
-    }
-    return result
+    return array.first(where: array[0...2].map{ $0 & 1 }.reduce(0, +) > 1 ? { $0 & 1 == 0 } : { $0 & 1 == 1 })!
 }
