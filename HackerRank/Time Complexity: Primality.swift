@@ -68,7 +68,7 @@ import Foundation
 
 
 
-// This solution is "Best" per the editorial on HackerRank, reutnring a solution after 11584 checks, half as much. This is accomplished by only comparing n to odd numbers in the range, since any even number greater than 2 is divisible by 2 and therefore not prime.
+// This solution is "Best" per the editorial on HackerRank, returning a solution after 11584 checks, half as much. This is accomplished by only comparing n to odd numbers in the range, since any even number greater than 2 is divisible by 2 and therefore not prime.
 
 func isPrime(_ n: Int) -> Bool {
     
