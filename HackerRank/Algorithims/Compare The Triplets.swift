@@ -53,6 +53,8 @@ import Foundation
 let a = Array(readLine()!.components(separatedBy: " ").map {Int($0)!})
 let b = Array(readLine()!.components(separatedBy: " ").map {Int($0)!})
 
+
+// Kind of brain dead easy, but doing it for completion's sake in the repository.
 func compareTriplets(_ a: [Int], _ b: [Int]) {
     var aScore = 0
     var bScore = 0
