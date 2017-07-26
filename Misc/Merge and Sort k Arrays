@@ -1,0 +1,67 @@
+//Given an array of k sorted arrays, return a single sorted array of all the elements in the k arrays.
+
+let array1 = [0, 2, 6]
+let array2 = [1, 4, 7, 8]
+let array3 = [0, 4, 9]
+
+let kArray = [array1, array2, array3]
+
+// Expected result: [0, 0, 1, 2, 4, 4, 6, 7, 8, 9]
+
+
+// Since we can't use built in sort or reduce functions...
+func sortReduce(_ input: [[Int]]) -> [Int] {
+    
+    // Create an array that we'll return as our result
+    var result = [Int]()
+    
+    // Create an array that will track the index values of each array in the input
+    var idxArray = Array(repeating: 0, count: input.count)
+    
+    // Set a boolean to evaluate whether we've reached the end of all our input
+    var endReached = false
+    
+    // While we have not reached the end...
+    while endReached == false {
+        
+        // ...check to see if we can unwrap the output of our helper function.
+        if let minimum = helperFunction(input, &idxArray) {
+            
+            // If we can, append the number to our results
+            result.append(minimum)
+        } else {
+            
+            // Otherwise we've reached the end
+            endReached = true
+        }
+    }
+    return result
+}
+
+
+// Our helper function takes in the our 2D array and our index value array, and uses a dictionary to return the lowest result and increment the cooresponding index by 1
+func helperFunction(_ input: [[Int]], _ indicies: inout [Int]) -> Int? {
+    
+    // Create our dictionary to store the index of the array in input, and the value of the element at the value of the same index in our index array
+    var idxValDict = [Int : Int]()
+    
+    // Populate it. If the index value is less than the count of the corresponding array, we add it to our dictionary
+    for (i, _) in input.enumerated() {
+        if indicies[i] < input[i].count {
+            idxValDict[i] = input[i][indicies[i]]
+        }
+    }
+    
+    // Determine which key has the lowest value and increment it by one. We break after, so it will only increment the first one it finds in the case of duplicate entries
+    for (key, value) in idxValDict {
+        if value == idxValDict.values.min() {
+            indicies[key] += 1
+            break
+        }
+    }
+    
+    // Return the minimum value of our dictionary.
+    return idxValDict.values.min()
+}
+
+// The time complexity of this is not the greatest, I'd gladly hear from everyone who can improve upon it.
