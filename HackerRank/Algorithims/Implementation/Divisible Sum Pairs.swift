@@ -9,7 +9,7 @@
 //
 // * 2 <= n <= 100
 // * 1 <= k <= 100
-// * 1 <= ai <[ 100
+// * 1 <= ai <= 100
 //
 //Output Format
 //
@@ -71,8 +71,37 @@ func divisibleSumPairs(divisor: Int, input: [Int]) -> Int {
     return counter
 }
 
-let nkValues = readLine()!.components(separatedBy: " ").map { Int($0)! }
-let k = nkValues[1]
-let input = Array(readLine()!.components(separatedBy: " ").map { Int($0)! })
+// This solution works with the constraints given, but is not optimal. An O(N) solution is possible.
+
+func optimalDivisibleSumPairs(divisor: Int, input: [Int]) -> Int {
+    
+    // Again, we have a counter
+    var count = 0
+    
+    // The idea behind this is that you can separate the elements into buckets depending on the mod value and count the matches. i.e. mod 3 == 0 will pair with other mod 3 == 0 elements, mod 3 == 1 will pair with mod 3 == 2 elements.
+    
+    // So here we make our array of the possible outcomes of % k
+    var complements = Array(repeating: 0, count: divisor)
+    
+    // Now we just need to iterate through the array the one time.
+    for i in input {
+        
+        // We calculate the remainder by modding i against our k value
+        let remainder = (i % divisor)
+        
+        // Use that to calculate the complement
+        let complement = (divisor - remainder) % divisor
+        
+        // i can be paired a number of values equal to the count of the remainder in our complements array.
+        count += complements[remainder]
+        
+        // We then increment our complement value by 1
+        complements[complement] += 1
+    }
+    
+    return count
+}
+
+
 
 
