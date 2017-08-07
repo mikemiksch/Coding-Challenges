@@ -6,7 +6,7 @@ We perform the following sequence of actions:
  
 **Select the option below that denotes the sorted list:**  
 
-* {1, 2, 3, 4, 5, 7, 9}
+* **{1, 2, 3, 4, 5, 7, 9}**
 * {9, 7, 5, 4, 3, 2, 1}
 * {1, 1, 1, 1, 2, 2, 3, 4, 5, 7, 9}
 * None of the above.
