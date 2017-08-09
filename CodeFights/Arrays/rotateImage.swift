@@ -30,10 +30,10 @@
 func rotateImage(a: [[Int]]) -> [[Int]] {
     var output = Array(repeatElement([Int](), count: a.count))
     for i in 0..<a.count {
-        var outputIdx = output.count - 1
+        var rowIdx = output.count - 1
         for j in a[i] {
-            output[outputIdx].insert(j, at: 0)
-            outputIdx -= 1
+            output[rowIdx].insert(j, at: 0)
+            rowIdx -= 1
         }
     }
     return output.reversed()
