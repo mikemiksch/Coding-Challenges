@@ -54,5 +54,3 @@ func firstDuplicate(a: [Int]) -> Int {
     return result
 }
 
-
-firstDuplicate(a: [2, 3, 3, 1, 5, 2])
