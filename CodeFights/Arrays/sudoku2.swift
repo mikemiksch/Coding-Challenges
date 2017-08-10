@@ -50,25 +50,37 @@
 
 import Foundation
 
-func sudoku2(grid: [[Character]]) -> Bool { 
+func sudoku2(grid: [[Character]]) -> Bool {
+    
+    // Iterate for each row in the array
     for i in 0..<9 {
+        
+        // Create variable sets to check against rows, columns, and squares
         var rows = NSMutableSet()
         var columns = NSMutableSet()
         var square = NSMutableSet()
+        
+        // Iterate for each element in the row
         for j in 0..<9 {
+            
+            // If the element at row i/col j is not a "." and it already exists in our rows set, return false
             if grid[i][j] != Character(".") && rows.contains(grid[i][j]) {
                 return false
                 
+            // Otherwise, we add it to our rows set
             } else {
                 rows.add(grid[i][j])
             }
             
-            if grid[j][i] != Character(".") && columns.contains(grid[j][i]) {                 
-               return false
+            // Same thing for columns, but we reverse our j and i values so we're looking at row j/col i
+            if grid[j][i] != Character(".") && columns.contains(grid[j][i]) {                 return false
                 
             } else {
                 columns.add(grid[j][i])
             }
+            
+            // Create variables for our row and column index for verifying the square is valid
+
             let rowIndex = 3 * (i/3)
             let colIndex = 3 * (i%3)
             if grid[rowIndex + j/3][colIndex + j%3] != Character(".") && square.contains(grid[rowIndex + j/3][colIndex + j%3]) {
@@ -80,7 +92,6 @@ func sudoku2(grid: [[Character]]) -> Bool {
     }
     return true
 }
-
 
 
 
