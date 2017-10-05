@@ -1,0 +1,69 @@
+//A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+//
+//A more detailed description of prime numbers can be found at: http://en.wikipedia.org/wiki/Prime_number
+//
+//The Problem
+//
+//You will need to create logic for the following two functions: isPrime(number) and getPrimes(start, finish)
+//
+//isPrime(number)
+//
+//Should return boolean true if prime, otherwise false
+//
+//getPrimes(start, finish)
+//
+//Should return a unique, sorted array of all primes in a given range (including the provided numbers, if they're prime). Note: start does not need to be the larger number.
+//
+//Sample Input:
+//
+//isPrime(number):
+//
+//isPrime(0); // === false
+//isPrime(1); // === false
+//isPrime(2); // === true
+//isPrime(3); // === true
+//isPrime(4); // === false
+//isPrime(5); // === true
+//getPrimes(start, finish):
+//
+//getPrimes(0, 0); // === []
+//getPrimes(0, 30); // === [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+//getPrimes(30, 0); // === [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+
+import Foundation
+
+
+// A variation on the code I use to check prime numbers, this time as an extension on the Int type
+extension Int {
+    func isPrime() -> Bool {
+        
+        // We don't even evaluate anything less than two; in part because we know it's not prime, and also a negative number would cause issues with our maximumDivider
+        if self < 2 {
+            return false
+        }
+        
+        // Our maximumDivider is the square root of our number as an Int. Negative numbers would return NaN for the square root.
+        let maximumDivider = Int(sqrt(Double(self)))
+        
+        // Our Bool return evaluates that the number is gerater than 1, and that it cannot be divided evenly into any number in the range of 2 to our maximumDivider
+        return self > 1 && !(2..<maximumDivider + 1).contains { self % $0 == 0}
+    }
+}
+
+func getPrimes(from start: Int, to end: Int) -> [Int] {
+    
+    // Create an array to store our results.
+    var results = [Int]()
+    
+    // Since start and end are not necessarily start < end, we define our range as the minimal number between the two to the maximum number of the two
+    for i in min(start, end)...max(start, end) {
+        
+        // If the number is prime, we append it to our results.
+        if i.isPrime() {
+            results.append(i)
+        }
+    }
+    
+    // Return our results.
+    return results
+}
