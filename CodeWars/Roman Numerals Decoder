@@ -10,13 +10,21 @@ import Foundation
 
 
 // Create a dictionary of all possible Roman numeral characters
-let numerals = ["I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
+let numerals = ["i": -1, "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
 
 
 // This solution is incomplete, as there's currently no logic governing how to handle numbers like 4 and 9 which would evaluate as 6 and 11 in the below code.
 func solution(_ string:String) -> Int {
-    let test = Array(string.characters).map { numerals[String($0)]}.reduce(0, { x, y in
+    var filteredString = [String]()
+    for (idx, char) in Array(string.characters).enumerated() {
+        if char == Character("I") && (idx == Array(string.characters).count - 1 || Array(string.characters)[idx + 1] != Character("I")) {
+            filteredString.append("i")
+        } else {
+            filteredString.append(String(char))
+        }
+    }
+    let output = filteredString.map { numerals[String($0)]}.reduce(0, { x, y in
         x + y!
     })
-    return test
+    return output
 }
