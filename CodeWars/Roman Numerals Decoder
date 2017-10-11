@@ -8,23 +8,33 @@
 
 import Foundation
 
+// Create a dictionary of our possible Roman numeral values
+let numerals = ["I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
 
-// Create a dictionary of all possible Roman numeral characters
-let numerals = ["i": -1, "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
-
-
-// This solution is incomplete, as there's currently no logic governing how to handle numbers like 4 and 9 which would evaluate as 6 and 11 in the below code.
 func solution(_ string:String) -> Int {
-    var filteredString = [String]()
-    for (idx, char) in Array(string.characters).enumerated() {
-        if char == Character("I") && (idx == Array(string.characters).count - 1 || Array(string.characters)[idx + 1] != Character("I")) {
-            filteredString.append("i")
+    
+    // Create a variable to store our total
+    var total = Int()
+    
+    // Make an array of the characters passed in as our string argument.
+    let characterArray = Array(string.characters)
+    
+    // For each index and character in our array...
+    for (idx, char) in characterArray.enumerated() {
+        
+        // ...check to see if the current index is less than our last index value, and if the value of our numeral is less than the one immediately following.
+        if idx < characterArray.count - 1 && numerals[String(char)]! < numerals[String(characterArray[idx + 1])]! {
+            
+            // If we're not at the last index and the following numeral is larger than our current one, we subtract the value of our current numeral from our total
+            total -= numerals[String(char)]!
+        
+        // Otherwise, we add the value of our numeral to our total
         } else {
-            filteredString.append(String(char))
+            total += numerals[String(char)]!
         }
     }
-    let output = filteredString.map { numerals[String($0)]}.reduce(0, { x, y in
-        x + y!
-    })
-    return output
-}
+
+    // Return our final total.
+    return total
+
+
