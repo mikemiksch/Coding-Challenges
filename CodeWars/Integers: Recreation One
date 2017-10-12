@@ -1,0 +1,46 @@
+//Divisors of 42 are : 1, 2, 3, 6, 7, 14, 21, 42. These divisors squared are: 1, 4, 9, 36, 49, 196, 441, 1764. The sum of the squared divisors is 2500 which is 50 * 50, a square!
+//
+//Given two integers m, n (1 <= m <= n) we want to find all integers between m and n whose sum of squared divisors is itself a square. 42 is such a number.
+//
+//The result will be an array of arrays(in C an array of Pair), each subarray having two elements, first the number whose squared divisors is a square and then the sum of the squared divisors.
+//
+//#Examples:
+//
+//list_squared(1, 250) --> [[1, 1], [42, 2500], [246, 84100]]
+//list_squared(42, 250) --> [[42, 2500], [246, 84100]]
+//The form of the examples may change according to the language, see Example Tests: for more details.
+
+import Foundation
+
+func listSquared(_ m: Int, _ n: Int) -> [(Int, Int)] {
+    
+    // Create an array of (Int,Int) tuples to store our results
+    var result = [(Int, Int)]()
+    
+    // For each number between m and n...
+    for i in m...n {
+        
+        // We started off with a square of our divisor
+        var squaredSum = i * i
+        
+        // For each number between 1 and half of our divisor...
+        for j in 1...(i/2) {
+            
+            // ...we see if our divisor can be evenly divided by it
+            if i % j == 0 {
+                
+                // If so, we add the squared total of j to our square total
+                squaredSum += j * j
+            }
+        }
+        
+        // We convert our squaredSum to a double and get its square root. If the raw square root is equal to the square root rounded, then we know it's a "square" number and we append it to our results.
+        if Double(squaredSum).squareRoot().rounded() == Double(squaredSum).squareRoot() {
+            result.append((i, Int(squaredSum)))
+        }
+    }
+    
+    // Return our result
+    return result
+}
+
